@@ -37,7 +37,7 @@ object futuresAndActorsExample extends App {
   val dbActor = system.actorOf(Props[DBActor])
   implicit val timeout = Timeout(25 seconds)
   
-  val future = dbActor.ask(CustomerId(42))
+  val future = dbActor ? (CustomerId(42))
   
   future onComplete {
     case Success(customer) => println(s"customer is: $customer")
