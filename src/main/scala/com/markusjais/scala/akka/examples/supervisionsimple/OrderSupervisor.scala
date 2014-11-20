@@ -17,7 +17,7 @@ class OrderSupervisor extends Actor with ActorLogging {
       val serviceProps = Props(new OrderServiceActor)
       val serviceActor = context.actorOf(serviceProps)
       val clientProps = Props(new OrderClientActor(serviceActor))
-      val clientActor = context.actorOf(clientProps)
+      val clientActor = context.actorOf(clientProps) // create client actor to start scheduler inside it
       context.become(initialized, discardOld = true)
   }
 

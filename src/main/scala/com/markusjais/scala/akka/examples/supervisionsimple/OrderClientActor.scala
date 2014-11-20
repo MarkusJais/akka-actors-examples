@@ -14,6 +14,8 @@ class OrderClientActor(orderServiceActor: ActorRef) extends Actor {
   import OrderClientActor._
 
   implicit val ec = context.dispatcher
+
+  //dummy scheduler to create orders. In a real system the orders would come from outside. The scheduler is just for demonstration purposes 
   val ticker = context.system.scheduler.schedule(1.second, 2.second, self, getNextOrderRequest)
 
   def receive = {
