@@ -17,8 +17,8 @@ object akka_examples extends Build {
 
       libraryDependencies ++= Seq(
 
-        "com.typesafe.akka" %% "akka-actor" % "2.2.0" withSources (),
-        "com.typesafe.akka" %% "akka-testkit" % "2.2.0" withSources ()
+        "com.typesafe.akka" %% "akka-actor" % "2.3.5" withSources (),
+        "com.typesafe.akka" %% "akka-testkit" % "2.3.5" withSources ()
 		
        )
     )

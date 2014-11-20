@@ -1,13 +1,10 @@
 package com.markusjais.scala.akka.examples.basics
 
-import akka.actor.Actor
-import akka.actor.Props
-import akka.event.Logging
-import akka.actor.ActorSystem
+import akka.actor.{ActorLogging, Actor, Props, ActorSystem}
 
-class AnimalActor extends Actor {
+class AnimalActor extends Actor with ActorLogging {
   import AnimalActor._
-  val log = Logging(context.system, AnimalActor.this)
+
   def receive = {
     case Cat(name) => log.info(s"got a cat: $name")
     case Eagle(name) => log.info(s"got an eagle: $name")

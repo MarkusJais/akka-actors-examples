@@ -1,9 +1,7 @@
 package com.markusjais.scala.akka.examples.become
 
-import akka.actor.Actor
-import akka.actor.Props
+import akka.actor.{ActorLogging, Actor, Props, ActorSystem}
 import akka.event.Logging
-import akka.actor.ActorSystem
 import scala.concurrent.duration._
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -12,9 +10,8 @@ import akka.util.Timeout
 import scala.util.Success
 import scala.util.Failure
 
-class LoadMonitorActor extends Actor {
+class LoadMonitorActor extends Actor with ActorLogging {
   import context._
-  val log = Logging(context.system, LoadMonitorActor.this)
 
   var numberOfSuccessfulLogins = 0
 
@@ -31,7 +28,7 @@ class LoadMonitorActor extends Actor {
       log.error("getting nervous")
       become(nervous)
     }
-    case "INFO" => log.error("relaxed")
+    case "INFO" => log.info("relaxed")
   }
 
   def receive = {
